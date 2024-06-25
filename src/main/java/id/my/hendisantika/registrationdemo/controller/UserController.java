@@ -1,5 +1,6 @@
 package id.my.hendisantika.registrationdemo.controller;
 
+import id.my.hendisantika.registrationdemo.dto.UserDto;
 import id.my.hendisantika.registrationdemo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,5 +36,11 @@ public class UserController {
         UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
         model.addAttribute("userdetail", userDetails);
         return "home";
+    }
+
+    @GetMapping("/login")
+    public String login(Model model, UserDto userDto) {
+        model.addAttribute("user", userDto);
+        return "login";
     }
 }
