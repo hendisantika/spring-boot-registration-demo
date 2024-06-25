@@ -1,5 +1,6 @@
 package id.my.hendisantika.registrationdemo.repository;
 
+import id.my.hendisantika.registrationdemo.dto.UserDto;
 import id.my.hendisantika.registrationdemo.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
