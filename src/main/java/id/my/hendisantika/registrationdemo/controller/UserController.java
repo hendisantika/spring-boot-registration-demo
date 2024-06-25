@@ -43,4 +43,10 @@ public class UserController {
         model.addAttribute("user", userDto);
         return "login";
     }
+
+    @GetMapping("/register")
+    public String register(Model model, UserDto userDto) {
+        model.addAttribute("user", userDto);
+        return "register";
+    }
 }
