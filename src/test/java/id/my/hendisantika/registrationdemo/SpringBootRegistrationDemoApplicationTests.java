@@ -1,4 +1,4 @@
-package id.my.hendisantika.springbootregistrationdemo;
+package id.my.hendisantika.registrationdemo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

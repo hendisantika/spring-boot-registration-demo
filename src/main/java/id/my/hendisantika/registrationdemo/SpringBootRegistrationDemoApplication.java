@@ -1,4 +1,4 @@
-package id.my.hendisantika.springbootregistrationdemo;
+package id.my.hendisantika.registrationdemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
