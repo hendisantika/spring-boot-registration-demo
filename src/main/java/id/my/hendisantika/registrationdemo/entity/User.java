@@ -1,5 +1,6 @@
 package id.my.hendisantika.registrationdemo.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,7 +21,7 @@ import lombok.NoArgsConstructor;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "users")
+@Table(name = "t_users")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,7 +29,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    // @Column(unique = true)
+    @Column(unique = true)
     private String username;
     private String password;
     private String fullname;

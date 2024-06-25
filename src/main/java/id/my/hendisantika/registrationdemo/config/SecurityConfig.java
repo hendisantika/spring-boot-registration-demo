@@ -34,7 +34,6 @@ public class SecurityConfig {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
-
     }
 
     @Bean
@@ -47,9 +46,8 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((req) -> req
-                        .requestMatchers("/register").permitAll().requestMatchers("home").permitAll())
-
-
+                        .requestMatchers("/login", "/register").permitAll()
+                        .requestMatchers("/home").permitAll())
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login") //enable this to go to your own custom login page
                         .loginProcessingUrl("/login") //enable this to use login page provided by spring security
@@ -62,9 +60,7 @@ public class SecurityConfig {
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                         .logoutSuccessUrl("/login?logout")
                 );
-
         return http.build();
-
     }
 
 
