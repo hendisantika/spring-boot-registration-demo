@@ -1,6 +1,7 @@
 package id.my.hendisantika.registrationdemo.controller;
 
 import id.my.hendisantika.registrationdemo.dto.UserDto;
+import id.my.hendisantika.registrationdemo.entity.User;
 import id.my.hendisantika.registrationdemo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.security.Principal;
 
@@ -48,5 +51,16 @@ public class UserController {
     public String register(Model model, UserDto userDto) {
         model.addAttribute("user", userDto);
         return "register";
+    }
+
+    @PostMapping("/register")
+    public String registerSava(@ModelAttribute("user") UserDto userDto, Model model) {
+        User user = userService.findByUsername(userDto.getUsername());
+        if (user != null) {
+            model.addAttribute("Userexist", user);
+            return "register";
+        }
+        userService.save(userDto);
+        return "redirect:/register?success";
     }
 }
