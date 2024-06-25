@@ -1,5 +1,6 @@
 package id.my.hendisantika.registrationdemo.service;
 
+import id.my.hendisantika.registrationdemo.dto.UserDto;
 import id.my.hendisantika.registrationdemo.entity.User;
 import id.my.hendisantika.registrationdemo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,5 +26,11 @@ public class UserService {
 
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
+    }
+
+    public User save(UserDto userDto) {
+        User user = new User(userDto.getUsername(), passwordEncoder.encode(userDto.getPassword()),
+                userDto.getFullname());
+        return userRepository.save(user);
     }
 }
