@@ -1,5 +1,6 @@
 package id.my.hendisantika.registrationdemo.service;
 
+import id.my.hendisantika.registrationdemo.entity.User;
 import id.my.hendisantika.registrationdemo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,4 +22,8 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     private final UserRepository userRepository;
+
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
 }
